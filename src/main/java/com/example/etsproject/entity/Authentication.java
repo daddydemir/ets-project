@@ -17,6 +17,9 @@ public class Authentication {
     @Column(name = "id")
     private int id;
 
+    @Column(name = "customer_id")
+    private int customerId;
+
     @Column(name = "token")
     private String token;
 
@@ -24,7 +27,7 @@ public class Authentication {
     private Date dateOfImport;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name ="customer_id", referencedColumnName = "id")
+    @JoinColumn(name ="customer_id", referencedColumnName = "id", insertable = false, updatable = false)
     private Customer customer;
 
 }

@@ -1,5 +1,6 @@
 package com.example.etsproject.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -11,7 +12,6 @@ import java.util.List;
 @Data
 @RequiredArgsConstructor
 @Table(name = "customers")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "authentications", "tickets"})
 public class Customer {
 
     @Id
@@ -25,6 +25,7 @@ public class Customer {
     @Column(name = "surname")
     private String surname;
 
+    @JsonIgnore
     @Column(name = "password")
     private String password;
 
@@ -38,8 +39,14 @@ public class Customer {
     private String profileImage;
 
     @OneToMany(mappedBy = "customer", targetEntity = Authentication.class, fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Authentication> authentications;
 
     @OneToMany(mappedBy = "customer", targetEntity = PlaneTicket.class, fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<PlaneTicket> tickets;
+
+    @OneToMany(mappedBy = "customer", targetEntity = Reservation.class, fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<Reservation> reservations;
 }

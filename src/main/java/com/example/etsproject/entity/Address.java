@@ -9,18 +9,24 @@ import javax.persistence.*;
 @Entity
 @Data
 @RequiredArgsConstructor
-@Table(name = "seats")
-public class Seat {
+@Table(name = "addresses")
+public class Address {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
-    @Column(name = "type")
-    private String type;
+    @Column(name = "title")
+    private String title;
 
-    @OneToOne(mappedBy = "seat", targetEntity = PlaneTicket.class, fetch = FetchType.LAZY)
+    @Column(name = "city")
+    private String city;
+
+    @Column(name = "description")
+    private String description;
+
+    @OneToOne(mappedBy = "address", targetEntity = Hotel.class, fetch = FetchType.LAZY)
     @JsonIgnore
-    private PlaneTicket ticket;
+    private Hotel hotel;
 }

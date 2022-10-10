@@ -14,7 +14,6 @@ import java.util.List;
 @Data
 @RequiredArgsConstructor
 @Table(name = "flights")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "tickets"})
 public class Flight {
 
     @Id
@@ -22,6 +21,9 @@ public class Flight {
     @Column(name = "id")
     @JsonIgnore
     private int id;
+
+    @Column(name = "plane_id")
+    private int planeId;
 
     @Column(name = "expedition_no")
     private String expeditionNo;
@@ -48,9 +50,11 @@ public class Flight {
     private Date departureTime;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "plane_id", referencedColumnName = "id")
+    @JoinColumn(name = "plane_id", referencedColumnName = "id", insertable = false, updatable = false)
+    @JsonIgnore
     private Plane plane;
 
-    @OneToMany(mappedBy = "flight", targetEntity = PlaneTicket.class, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "flight", targetEntity = PlaneTicket.class, fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<PlaneTicket> tickets;
 }

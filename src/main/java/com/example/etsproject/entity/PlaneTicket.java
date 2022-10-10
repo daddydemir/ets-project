@@ -1,5 +1,6 @@
 package com.example.etsproject.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -12,7 +13,6 @@ import javax.persistence.*;
 @EqualsAndHashCode
 @RequiredArgsConstructor
 @Table(name = "plane_tickets")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class PlaneTicket {
 
     @Id
@@ -23,8 +23,18 @@ public class PlaneTicket {
     @Column(name = "price")
     private double price;
 
+    @Column(name = "person_id")
+    private int personId;
+
+    @Column(name = "flight_id")
+    private int flightId;
+
+    @Column(name = "customer_id")
+    private int customerId;
+
     @ManyToOne(optional = false)
-    @JoinColumn(name = "person_id" , referencedColumnName = "id")
+    @JoinColumn(name = "person_id", referencedColumnName = "id", insertable = false, updatable = false)
+    @JsonIgnore
     private Person person;
 
     @OneToOne(optional = false)
@@ -32,10 +42,12 @@ public class PlaneTicket {
     private Seat seat;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "flight_id", referencedColumnName = "id")
+    @JoinColumn(name = "flight_id", referencedColumnName = "id", insertable = false, updatable = false)
+    @JsonIgnore
     private Flight flight;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "customer_id", referencedColumnName = "id")
+    @JoinColumn(name = "customer_id", referencedColumnName = "id", insertable = false, updatable = false)
+    @JsonIgnore
     private Customer customer;
 }
