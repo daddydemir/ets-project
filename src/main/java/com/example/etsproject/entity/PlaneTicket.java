@@ -26,6 +26,9 @@ public class PlaneTicket {
     @Column(name = "person_id")
     private int personId;
 
+    @Column(name = "seat_id")
+    private int seatId;
+
     @Column(name = "flight_id")
     private int flightId;
 
@@ -38,7 +41,7 @@ public class PlaneTicket {
     private Person person;
 
     @OneToOne(optional = false)
-    @JoinColumn(name = "seat_id", referencedColumnName = "id")
+    @JoinColumn(name = "seat_id", referencedColumnName = "id", insertable = false, updatable = false)
     private Seat seat;
 
     @ManyToOne(optional = false)

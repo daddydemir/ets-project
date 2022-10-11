@@ -44,6 +44,7 @@ public class Hotel {
 
     @OneToOne(optional = false)
     @JoinColumn(name = "address_id", referencedColumnName = "id", insertable = false, updatable = false)
+    @JsonIgnore
     private Address address;
 
     @OneToMany(mappedBy = "hotel", targetEntity = Room.class, fetch = FetchType.LAZY)

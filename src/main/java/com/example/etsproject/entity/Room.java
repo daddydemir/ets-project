@@ -1,5 +1,6 @@
 package com.example.etsproject.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
@@ -39,6 +40,7 @@ public class Room {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "hotel_id", referencedColumnName = "id", insertable = false, updatable = false)
+    @JsonIgnore
     private Hotel hotel;
 
 }
