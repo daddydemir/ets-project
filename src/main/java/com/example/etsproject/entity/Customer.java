@@ -1,7 +1,6 @@
 package com.example.etsproject.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
@@ -29,6 +28,7 @@ public class Customer {
     @Column(name = "password")
     private String password;
 
+    @JsonIgnore
     @Column(name = "email", unique = true)
     private String email;
 
