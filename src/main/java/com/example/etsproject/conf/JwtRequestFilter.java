@@ -1,7 +1,7 @@
 package com.example.etsproject.conf;
 
-import com.example.etsproject.core.JwtService;
-import com.example.etsproject.core.JwtUtil;
+import com.example.etsproject.core.jwt.JwtService;
+import com.example.etsproject.core.jwt.JwtUtil;
 import io.jsonwebtoken.ExpiredJwtException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
