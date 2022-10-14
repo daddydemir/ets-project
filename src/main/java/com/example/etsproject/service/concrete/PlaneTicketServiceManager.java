@@ -125,8 +125,18 @@ public class PlaneTicketServiceManager implements PlaneTicketService {
         if (rule != null){
             return new ErrorResult(rule.getMessage());
         }
-        // TODO: 05/10/2022  bilet iptal edildiğinde uçaktaki koltuk kapasitesi artırılmalı. 
-        planeTicketRepository.delete(findById(id).getData());
+        // TODO: 05/10/2022  bilet iptal edildiğinde uçaktaki koltuk kapasitesi artırılmalı.
+        PlaneTicket ticket = findById(id).getData();
+        Flight f = flightRepository.findById(ticket.getFlightId());
+        if(ticket.getSeatId() == 1){
+            // business
+            f.setEmptyBusiness(f.getEmptyBusiness() + 1);
+        }else{
+            //economy
+            f.setEmptyEconomy(f.getEmptyEconomy() + 1);
+        }
+        flightRepository.save(f);
+        planeTicketRepository.delete(ticket);
         return new SuccessResult("Biletiniz iptal edildi. 3 iş günü içersinde bilet ücreti hesabınıza aktarılacaktır.");
     }
 }
