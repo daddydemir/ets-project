@@ -40,8 +40,9 @@ public class PlaneTicket {
     @JsonIgnore
     private Person person;
 
-    @OneToOne(optional = false)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "seat_id", referencedColumnName = "id", insertable = false, updatable = false)
+    @JsonIgnore
     private Seat seat;
 
     @ManyToOne(optional = false)

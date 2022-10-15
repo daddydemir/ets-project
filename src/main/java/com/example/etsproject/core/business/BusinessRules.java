@@ -1,6 +1,6 @@
 package com.example.etsproject.core.business;
 
-import com.example.etsproject.utils.Result;
+        import com.example.etsproject.utils.Result;
 
 public class BusinessRules {
 

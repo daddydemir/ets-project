@@ -27,7 +27,7 @@ public class AddressServiceManager implements AddressService {
     @Override
     public DataResult<List<Address>> getAllAddressByCityId(String city) {
         var result = addressRepository.findAllByCity(city);
-        if (result == null){
+        if (result.isEmpty()){
             return new ErrorDataResult<>("Bu şehire ait hiç kayıt bulunamadı.");
         }
         return new SuccessDataResult<>(result);

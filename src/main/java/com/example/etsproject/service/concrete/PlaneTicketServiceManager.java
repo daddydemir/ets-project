@@ -50,7 +50,7 @@ public class PlaneTicketServiceManager implements PlaneTicketService {
             return new ErrorDataResult<>(null, rule.getMessage());
         }
         var result = planeTicketRepository.findAllByCustomerId(id);
-        if (result == null){
+        if (result.isEmpty()){
             return new ErrorDataResult<>("Hiç biletiniz yok.");
         }
         return new SuccessDataResult<>(result);
@@ -59,7 +59,7 @@ public class PlaneTicketServiceManager implements PlaneTicketService {
     @Override
     public DataResult<List<PlaneTicket>> findByPersonId(int id) {
         var result = planeTicketRepository.findAllByPersonId(id);
-        if (result == null){
+        if (result.isEmpty()){
             return new ErrorDataResult<>("Kişiye ait hiç bilet bulunamadı.");
         }
         return new SuccessDataResult<>(result);
@@ -68,7 +68,7 @@ public class PlaneTicketServiceManager implements PlaneTicketService {
     @Override
     public DataResult<List<PlaneTicket>> findByFlightId(int id) {
         var result = planeTicketRepository.findAllByFlightId(id);
-        if (result == null){
+        if (result.isEmpty()){
             return new ErrorDataResult<>("Uçuşa ait bilet bulunamadı.");
         }
         return new SuccessDataResult<>(result);

@@ -19,6 +19,5 @@ public interface PlaneTicketService {
     
     Result add(TicketDto ticket);
 
-    // TODO: 05/10/2022  bilet iptal edilince koltuk sayısı güncellenmeli unutma.
     Result delete(int id);
 }

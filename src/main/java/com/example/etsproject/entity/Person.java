@@ -31,7 +31,7 @@ public class Person {
     @Column(name = "phone")
     private String phone;
 
-    @Column(name = "email", unique = true)
+    @Column(name = "email")
     private String email;
 
     @Column(name = "gender")

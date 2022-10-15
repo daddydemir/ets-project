@@ -42,7 +42,7 @@ public class ReservationServiceManager implements ReservationService {
             return new ErrorDataResult<>(null,rule.getMessage());
         }
         var result = reservationRepository.findByCustomerId(customerId);
-        if (result == null){
+        if (result.isEmpty()){
             return new ErrorDataResult<>("Rezervasyon yaptırmamışsınız.");
         }
         return new SuccessDataResult<>(result);
@@ -51,7 +51,7 @@ public class ReservationServiceManager implements ReservationService {
     @Override
     public DataResult<List<Reservation>> getByHotelId(int hotelId) {
         var result = reservationRepository.findByHotelId(hotelId);
-        if (result == null){
+        if (result.isEmpty()){
             return new ErrorDataResult<>("Rezervasyon bulunamadı.");
         }
         return new SuccessDataResult<>(result);

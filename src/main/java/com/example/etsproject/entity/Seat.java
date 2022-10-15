@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -20,7 +21,7 @@ public class Seat {
     @Column(name = "type")
     private String type;
 
-    @OneToOne(mappedBy = "seat", targetEntity = PlaneTicket.class, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "seat", targetEntity = PlaneTicket.class, fetch = FetchType.LAZY)
     @JsonIgnore
-    private PlaneTicket ticket;
+    private List<PlaneTicket> tickets;
 }

@@ -37,8 +37,6 @@ public class AuthManager implements AuthService {
 
     @Override
     public Result login(LoginDto loginDto) {
-
-        // kod çalışmıyor ! dün çalışıyordu
         var userToCheck = customerService.getByEmail( loginDto.getEmail());
         if(!userToCheck.isSuccess()){
             return new ErrorResult("Email adresi yanlış.");

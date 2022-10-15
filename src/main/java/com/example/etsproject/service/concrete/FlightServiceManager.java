@@ -41,7 +41,7 @@ public class FlightServiceManager implements FlightService {
     @Override
     public DataResult<List<Flight>> getAllByPlaneId(int id) {
         var result = flightRepository.findAllByPlaneId(id);
-        if(result == null){
+        if(result.isEmpty()){
             return new ErrorDataResult<>("Bu firmaya ait uçuş bulunamadı.");
         }
         return new SuccessDataResult<>(result);
@@ -74,11 +74,4 @@ public class FlightServiceManager implements FlightService {
         return new SuccessResult("Uçuş iptal edildi.");
         // TODO: 05/10/2022 uçuşu iptal edilen müşterilerin hesabına para aktarılmalı ve bilgilendirilmeli.
     }
-
-    @Override
-    public DataResult<List<Flight>> getir() {
-        String from = "sivas";
-        return new SuccessDataResult<>(flightRepository.findByFrom(from));
-    }
-
 }

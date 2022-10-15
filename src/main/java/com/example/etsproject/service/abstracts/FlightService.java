@@ -25,6 +25,4 @@ public interface FlightService {
     Result update(Flight flight);
 
     Result delete(int id);
-
-    DataResult<List<Flight>> getir();
 }

@@ -19,7 +19,7 @@ public class AuthenticationServiceManager implements AuthenticationService {
     @Override
     public DataResult<List<Authentication>> getAuthenticationsByCustomerId(int id) {
         var result = authenticationRepository.getAuthenticationsByCustomerId(id);
-        if(result == null){
+        if(result.isEmpty()){
             return new ErrorDataResult<>("Hiç kayıt bulunamadı.");
         }
         return new SuccessDataResult<>(result);
