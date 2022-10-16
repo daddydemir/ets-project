@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -26,7 +27,7 @@ public class Address {
     @Column(name = "description")
     private String description;
 
-    @OneToOne(mappedBy = "address", targetEntity = Hotel.class, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "address", targetEntity = Hotel.class, fetch = FetchType.LAZY)
     @JsonIgnore
-    private Hotel hotel;
+    private List<Hotel> hotels;
 }

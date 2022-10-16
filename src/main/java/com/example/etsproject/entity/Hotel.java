@@ -42,7 +42,7 @@ public class Hotel {
     @Column(name = "image")
     private String image;
 
-    @OneToOne(optional = false)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "address_id", referencedColumnName = "id", insertable = false, updatable = false)
     @JsonIgnore
     private Address address;
