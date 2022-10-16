@@ -7,6 +7,8 @@ import com.example.etsproject.utils.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class RoomServiceManager implements RoomService{
@@ -34,5 +36,14 @@ public class RoomServiceManager implements RoomService{
         // TODO: 11/10/2022 otelin oda kapasitesi 1 azaltılmalı --1
         roomRepository.delete(getById(id).getData());
         return new SuccessResult("Oda silindi.");
+    }
+
+    @Override
+    public DataResult<List<Room>> search(int adult, int child) {
+        var result = roomRepository.search(adult,child);
+        if(result.isEmpty()){
+            return new ErrorDataResult<>(null,"Oda bulunamadı.");
+        }
+        return new SuccessDataResult<>(result);
     }
 }
