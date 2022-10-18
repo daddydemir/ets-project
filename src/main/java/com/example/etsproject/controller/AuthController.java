@@ -1,10 +1,8 @@
 package com.example.etsproject.controller;
 
-import com.example.etsproject.core.jwt.JwtService;
 import com.example.etsproject.dto.CustomerDto;
 import com.example.etsproject.dto.LoginDto;
 import com.example.etsproject.service.abstracts.AuthService;
-import com.example.etsproject.utils.SuccessDataResult;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/auth/")
 public class AuthController {
 
-    private final JwtService jwtService;
     private final AuthService authService;
 
     @PostMapping("login")
@@ -29,7 +26,7 @@ public class AuthController {
         if (!result.isSuccess()) {
             return new ResponseEntity<Object>(result, HttpStatus.BAD_REQUEST);
         }
-        return ResponseEntity.ok(new SuccessDataResult<Object>(jwtService.createJwtToken(loginDto)));
+        return ResponseEntity.ok(result);
     }
 
     @PostMapping("register")

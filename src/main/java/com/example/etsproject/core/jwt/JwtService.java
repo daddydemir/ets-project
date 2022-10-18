@@ -28,7 +28,7 @@ public class JwtService implements UserDetailsService {
     // @Autowired is throw error
     private AuthenticationManager authenticationManager;
 
-    public JwtResponse createJwtToken(LoginDto loginDto) throws Exception{
+    public JwtResponse createJwtToken(LoginDto loginDto){
         authenticate(loginDto.getEmail(),loginDto.getPassword());
 
         UserDetails userDetails = loadUserByUsername(loginDto.getEmail());
