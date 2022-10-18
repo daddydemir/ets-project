@@ -1,5 +1,6 @@
 package com.example.etsproject.controller;
 
+import com.example.etsproject.dto.ReservationDto;
 import com.example.etsproject.entity.Reservation;
 import com.example.etsproject.service.abstracts.ReservationService;
 import lombok.RequiredArgsConstructor;
@@ -42,8 +43,8 @@ public class ReservationController {
     }
 
     @PostMapping("reservation")
-    public ResponseEntity<?> add(@RequestBody Reservation reservation){
-        var result = reservationService.add(reservation);
+    public ResponseEntity<?> add(@RequestBody ReservationDto reservationDto){
+        var result = reservationService.add(reservationDto);
         if (!result.isSuccess()){
             return new ResponseEntity<>(result, HttpStatus.BAD_REQUEST);
         }

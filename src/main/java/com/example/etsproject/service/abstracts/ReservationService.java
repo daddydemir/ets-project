@@ -1,5 +1,6 @@
 package com.example.etsproject.service.abstracts;
 
+import com.example.etsproject.dto.ReservationDto;
 import com.example.etsproject.entity.Reservation;
 import com.example.etsproject.utils.DataResult;
 import com.example.etsproject.utils.Result;
@@ -14,7 +15,7 @@ public interface ReservationService {
 
     DataResult<List<Reservation>> getByHotelId(int hotelId);
 
-    Result add(Reservation reservation);
+    Result add(ReservationDto reservationDto);
 
     Result delete(int id);
 }

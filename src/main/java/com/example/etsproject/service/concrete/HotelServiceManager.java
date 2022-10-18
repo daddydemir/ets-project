@@ -71,14 +71,12 @@ public class HotelServiceManager implements HotelService {
             return new ErrorDataResult<>("Aradığınız bölgede boş otel bulunamadı.1");
         }
 
-        System.out.println("Address: " + address.getData().size());
 
         var room = roomServiceManager.search(hotelDto.getAdult(), hotelDto.getChild());
         if (!room.isSuccess()) {
             return new ErrorDataResult<>("Aradığınız bölgede boş otel bulunamadı.2");
         }
 
-        System.out.println("Room: " + room.getData().size());
 
 
         var hotel = hotelRepository.search();
@@ -104,7 +102,6 @@ public class HotelServiceManager implements HotelService {
             }
         }
 
-        System.out.println("oda_otel : " + room_hotels.size());
 
         for(Hotel hroom: room_hotels){
             for (Hotel aroom: hotels){
@@ -113,7 +110,7 @@ public class HotelServiceManager implements HotelService {
                 }
             }
         }
-        
+
         if (last.isEmpty()) {
             return new ErrorDataResult<>("Aradığınız bölgede boş otel bulunamadı.4");
         }

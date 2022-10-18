@@ -48,7 +48,7 @@ public class Hotel {
     private Address address;
 
     @OneToMany(mappedBy = "hotel", targetEntity = Room.class, fetch = FetchType.LAZY)
-    @JsonIgnore
+
     private List<Room> room;
 
     @OneToMany(mappedBy = "hotel", targetEntity = Reservation.class, fetch = FetchType.LAZY)

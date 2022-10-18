@@ -20,30 +20,21 @@ public class ElasticController {
 
     @PostConstruct
     public void init(){
-        ElasticAddress ea = new ElasticAddress();
-        ea.setName("Antalya");
-
-        ElasticAddress ea1 = new ElasticAddress();
-        ea1.setName("Antakya");
-
-        ElasticAddress ea2 = new ElasticAddress();
-        ea2.setName("Ankara");
-
-        ElasticAddress ea3 = new ElasticAddress();
-        ea3.setName("Anıtkabir");
-
-        repository.save(ea);
-        repository.save(ea1);
-        repository.save(ea2);
-        repository.save(ea3);
+/*
+        repository.save(new ElasticAddress("Antalya"));
+        repository.save(new ElasticAddress("Antakya"));
+        repository.save(new ElasticAddress("Ankara"));
+        repository.save(new ElasticAddress("Anıtkabir"));
 
         repository.save(new ElasticAddress("Istanbul"));
         repository.save(new ElasticAddress("Izmir"));
         repository.save(new ElasticAddress("Sivas"));
         repository.save(new ElasticAddress("Konya"));
         repository.save(new ElasticAddress("Bursa"));
-        repository.save(new ElasticAddress("Manavgat"));
+        repository.save(new ElasticAddress("Manavgat"))
 
+ */
+        System.out.println(repository.findAll().toString());
 
     }
 
