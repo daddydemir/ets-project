@@ -1,5 +1,13 @@
-# ets-project
+> # hazırlayan **Mehmet Çakmaktaşı**
+---
 
+### VIDEO
+
+
+NOT: Hocam video boyutu 10MB'ı aştığı için github kabul etmedi bu yüzden youtube'a yükledim. (video biraz uzun oldu umarım aldırmazsınız. Teşekkürler.)
+
+[video](https://youtu.be/E_Bld1qeejM)
+---
 
 > Bu proje kapsamında **Uçak Bileti** ve **Otel Rezervasyonu** işlemleri yapılabilmektedir.
 
